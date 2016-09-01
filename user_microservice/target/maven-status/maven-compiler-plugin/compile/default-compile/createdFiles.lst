@@ -1,0 +1,5 @@
+com\leaguelove\user\web\UserController.class
+com\leaguelove\user\Application.class
+com\leaguelove\user\domain\UserModel.class
+com\leaguelove\user\service\UserServiceImpl.class
+com\leaguelove\user\service\UserService.class

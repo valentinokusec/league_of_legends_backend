@@ -1,0 +1,6 @@
+D:\projects-git\league_of_legends_backend\user_microservice\src\main\java\com\leaguelove\user\Application.java
+D:\projects-git\league_of_legends_backend\user_microservice\src\main\java\com\leaguelove\user\web\UserController.java
+D:\projects-git\league_of_legends_backend\user_microservice\src\main\java\com\leaguelove\user\domain\UserModel.java
+D:\projects-git\league_of_legends_backend\user_microservice\src\main\java\com\leaguelove\user\repository\CrudRepository.java
+D:\projects-git\league_of_legends_backend\user_microservice\src\main\java\com\leaguelove\user\service\UserServiceImpl.java
+D:\projects-git\league_of_legends_backend\user_microservice\src\main\java\com\leaguelove\user\service\UserService.java

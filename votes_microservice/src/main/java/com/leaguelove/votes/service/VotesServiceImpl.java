@@ -87,6 +87,7 @@ public class VotesServiceImpl implements VotesService{
 							data_vote.put("data", movies_list.get(k).getData());
 							data_vote.put("profile_icon", movies_list.get(k).getProfile_icon());
 							data_vote.put("match_id", movies_list.get(k).getMatch_id());
+							
 							vote_array.put(data_vote);
 							movies_list.remove(k);
 						}
@@ -102,7 +103,7 @@ public class VotesServiceImpl implements VotesService{
 		    			if (name.contains(users.getSummonerName()) || name_uppercase.contains(users.getSummonerName())) {
 		    				vote.put("champion", users.getChampion().toString());
 		    				vote.put("profile_icon", users.getProfileIconID());
-		    			
+		    				vote.put("details", getMatch(voteModel.getMatch_id(),name).get(0));
 						}
 					
 		    		}

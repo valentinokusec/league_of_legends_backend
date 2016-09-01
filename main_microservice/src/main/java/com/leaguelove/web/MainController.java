@@ -47,6 +47,14 @@ public class MainController {
         return  mainService.getGeneralData(name).toString();
     }
     @CrossOrigin(origins = "http://localhost:8001")
+    @RequestMapping("/getrandommessage")
+    public String GetRandomMessage() throws Exception {
+
+
+      	
+        return  mainService.getRandomMessage().toString();
+    }
+    @CrossOrigin(origins = "http://localhost:8001")
     @RequestMapping("/getrecenthistory")
     public String RecentHistory(
           @RequestParam(value = "name", required = true) String name) throws Exception {

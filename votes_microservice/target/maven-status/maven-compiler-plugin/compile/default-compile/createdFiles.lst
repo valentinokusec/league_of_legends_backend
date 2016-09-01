@@ -1,0 +1,5 @@
+com\leaguelove\votes\domain\VoteModel.class
+com\leaguelove\votes\web\VotesController.class
+com\leaguelove\votes\service\VotesService.class
+com\leaguelove\votes\service\VotesServiceImpl.class
+com\leaguelove\votes\Application.class

@@ -1,0 +1,6 @@
+com\leaguelove\leadboard\repository\CrudRepository.class
+com\leaguelove\leadboard\Application.class
+com\leaguelove\leadboard\domain\LeadBoardModel.class
+com\leaguelove\leadboard\service\LeadBoardServiceImpl.class
+com\leaguelove\leadboard\service\LeadBoardService.class
+com\leaguelove\leadboard\web\LeadboardController.class

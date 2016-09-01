@@ -14,4 +14,6 @@ public interface MainService {
 	
 	public JSONArray getChampionHistory(String name,String championname);
 
+	public JSONArray getRandomMessage();
+
 }

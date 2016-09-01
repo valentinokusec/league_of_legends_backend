@@ -7,13 +7,19 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
-
+import com.cloudant.client.api.ClientBuilder;
+import com.cloudant.client.api.CloudantClient;
+import com.cloudant.client.api.Database;
+import com.cloudant.client.api.model.IndexField;
+import com.cloudant.client.api.model.IndexField.SortOrder;
+import com.leaguelove.domain.VoteModel;
 import com.robrua.orianna.api.core.RiotAPI;
 import com.robrua.orianna.type.core.common.Region;
 import com.robrua.orianna.type.core.common.Season;
@@ -26,13 +32,30 @@ import com.robrua.orianna.type.core.summoner.Summoner;
 @Service
 public class MainServiceImpl implements MainService{
 
+	
+	CloudantClient client;
+	Database db;
+	
 	private static final String API_KEY="172d9054-b070-449d-bb68-cbbe94f29e7c";
 	
     public MainServiceImpl()
     {
     	RiotAPI.setRegion(Region.EUW);
         RiotAPI.setAPIKey(API_KEY);
-        
+        client= ClientBuilder.account("tino")
+                .username("tino")
+                .password("ireliaftw1")
+                .build();
+
+		//Note: for Cloudant Local or Apache CouchDB use:
+		//ClientBuilder.url(new URL("yourCloudantLocalAddress.example"))
+		//.username("exampleUser")
+		//.password("examplePassword")
+		//.build();
+		
+		//Show the server version
+		System.out.println("Server Version: " + client.serverVersion());
+		db = client.database("league_of_legends", false);
 
 		//Get a List of all the databases this Cloudant account
 		
@@ -424,4 +447,69 @@ private JSONArray getChampionList(Summoner summoner) {
 	return champion_sorted;
 }
 
+@Override
+public JSONArray getRandomMessage() {
+	// TODO Auto-generated method stub
+	JSONArray data=new JSONArray();
+	List<VoteModel> movies_list = null;
+	
+	
+	//long matchid=listmatch.get(i).getID();
+	
+	movies_list = db.findByIndex("{selector: {}}",
+			VoteModel.class);
+
+
+    // nextInt is normally exclusive of the top value,
+    // so add 1 to make it inclusive
+    int randomNum = new Random().nextInt((movies_list.size() - 0) + 1) + 0;
+	int k=randomNum;
+	JSONObject data_vote=new JSONObject();
+	data_vote.put("to", movies_list.get(k).getTo());
+	data_vote.put("from", movies_list.get(k).getFrom());
+	data_vote.put("data", movies_list.get(k).getData());
+	data_vote.put("profile_icon", movies_list.get(k).getProfile_icon());
+	data_vote.put("match_id", movies_list.get(k).getMatch_id());
+	data.put(data_vote);
+	data.put(getMatchRandom(movies_list.get(k).getMatch_id(), movies_list.get(k).getTo()));
+	return data;
+}
+private JSONArray getMatchRandom(Long matchid, String string) {
+	// TODO Auto-generated method stub
+	JSONArray history=new JSONArray();
+	int counter=0;
+	String name_uppercase= string.substring(0,1).toUpperCase()+string.substring(1);
+	for (Participant users:RiotAPI.getMatch(matchid).getParticipants()) {
+			
+			if (users.getSummonerName().contains(string) || name_uppercase.contains(users.getSummonerName())) {
+				JSONObject stats=new JSONObject();
+				
+				if (counter<=5) {
+					stats.put("win", RiotAPI.getMatch(matchid).getTeams().get(0).getWinner());
+					
+				}
+				else {
+					stats.put("win", RiotAPI.getMatch(matchid).getTeams().get(1).getWinner());
+				}
+				stats.put("champ_id", users.getChampionID());
+				stats.put("name", users.getSummonerName());
+				stats.put("champion", users.getChampion());					
+				stats.put("assists", users.getStats().getAssists());
+				stats.put("deaths", users.getStats().getDeaths());
+				stats.put("kills", users.getStats().getKills());
+				
+				stats.put("item_0", users.getStats().getItem0ID());
+				stats.put("item_1", users.getStats().getItem1ID());
+				stats.put("item_2", users.getStats().getItem2ID());
+				stats.put("item_3", users.getStats().getItem3ID());
+				stats.put("item_4", users.getStats().getItem4ID());
+				stats.put("item_5", users.getStats().getItem5ID());
+			
+				history.put(stats);
+			}
+			
+		
+	}
+	return history;
+}
 }

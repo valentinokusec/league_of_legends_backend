@@ -1,3 +1,5 @@
-D:\projects\gs-rest-hateoas\league_api_microservice\src\main\java\hello\StatsController.java
-D:\projects\gs-rest-hateoas\league_api_microservice\src\main\java\hello\Application.java
-D:\projects\gs-rest-hateoas\league_api_microservice\src\main\java\hello\Greeting.java
+D:\projects-git\league_of_legends_backend\main_microservice\src\main\java\com\leaguelove\Application.java
+D:\projects-git\league_of_legends_backend\main_microservice\src\main\java\com\leaguelove\web\MainController.java
+D:\projects-git\league_of_legends_backend\main_microservice\src\main\java\com\leaguelove\services\MainServiceImpl.java
+D:\projects-git\league_of_legends_backend\main_microservice\src\main\java\com\leaguelove\domain\VoteModel.java
+D:\projects-git\league_of_legends_backend\main_microservice\src\main\java\com\leaguelove\services\MainService.java

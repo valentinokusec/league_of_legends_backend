@@ -1,0 +1,6 @@
+com\leaguelove\submitvotes\service\SubmitVotesServiceImpl.class
+com\leaguelove\submitvotes\web\SubmitVotesController.class
+com\leaguelove\submitvotes\Application.class
+com\leaguelove\submitvotes\service\SubmitVotesService.class
+com\leaguelove\submitvotes\domain\UserModel.class
+com\leaguelove\submitvotes\domain\VoteModel.class

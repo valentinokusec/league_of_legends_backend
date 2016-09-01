@@ -1,0 +1,6 @@
+com\leaguelove\match\service\MatchServiceImpl.class
+com\leaguelove\match\web\MatchController.class
+com\leaguelove\match\domain\LeadBoardModel.class
+com\leaguelove\match\Application.class
+com\leaguelove\match\domain\VoteModel.class
+com\leaguelove\match\service\MatchService.class

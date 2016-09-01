@@ -1,0 +1,4 @@
+com\leaguelove\livestats\service\LiveStatsService.class
+com\leaguelove\livestats\web\LiveStatsController.class
+com\leaguelove\livestats\Application.class
+com\leaguelove\livestats\service\LiveStatsServiceImpl.class
